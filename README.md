@@ -1,2 +1,2 @@
 # qooh-spammer
-Use python requests to spam a qooh.me page with questions
+Use multi-threaded python requests to spam a qooh.me page with questions
