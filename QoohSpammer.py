@@ -1,21 +1,25 @@
 from requests import get, post
 from bs4 import BeautifulSoup
-from colorama import Fore, Style
+from colorama import Fore, Style, init
+from os import system
 import threading
 
-THREADS = 30
+init()
+system("cls")
+
+THREADS = 50
 
 def inp():
-  return f'[{Fore.BLUE}input{Style.RESET_ALL}] »'
+  return f'[{Fore.BLUE}input{Style.RESET_ALL}] Â»'
 
 def info():
-    return f'[{Fore.YELLOW}info{Style.RESET_ALL}] »'
+    return f'[{Fore.YELLOW}info{Style.RESET_ALL}] Â»'
 
 def suc():
-  return f'[{Fore.GREEN}success{Style.RESET_ALL}] »'
+  return f'[{Fore.GREEN}success{Style.RESET_ALL}] Â»'
 
 def err():
-  return f'[{Fore.RED}err{Style.RESET_ALL}] »'
+  return f'[{Fore.RED}err{Style.RESET_ALL}] Â»'
 
 def ext():
   input('Press enter to exit: ')
@@ -37,7 +41,7 @@ def spam(data,max):
     while sent < max:
       response = post('https://qooh.me/processes/userprofile/index.php',  data=data)
       if response.status_code == 200:
-        print(f'{suc()} {sent+1} Questions sent successfully', end='\r')
+        print(f'{suc()} {sent+1} Questions sent successfully')
         sent += 1
       else:
         print(f'{err()} Error sending question') 
@@ -79,5 +83,3 @@ for t in allThreads:
 
 print(f'{info()} Sent {sent} questions to https://qooh.me/{username}')
 ext()
-
-
