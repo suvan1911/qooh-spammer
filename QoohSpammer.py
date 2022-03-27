@@ -7,19 +7,20 @@ import threading
 init()
 system("cls")
 
+screenlock = threading.Semaphore(value=1)
 THREADS = 50
 
 def inp():
-  return f'[{Fore.BLUE}input{Style.RESET_ALL}] Â»'
+  return f'[{Fore.BLUE}input{Style.RESET_ALL}] »'
 
 def info():
-    return f'[{Fore.YELLOW}info{Style.RESET_ALL}] Â»'
+  return f'[{Fore.YELLOW}info{Style.RESET_ALL}] »'
 
 def suc():
-  return f'[{Fore.GREEN}success{Style.RESET_ALL}] Â»'
+  return f'[{Fore.GREEN}success{Style.RESET_ALL}] »'
 
 def err():
-  return f'[{Fore.RED}err{Style.RESET_ALL}] Â»'
+  return f'[{Fore.RED}err{Style.RESET_ALL}] »'
 
 def ext():
   input('Press enter to exit: ')
@@ -41,7 +42,9 @@ def spam(data,max):
     while sent < max:
       response = post('https://qooh.me/processes/userprofile/index.php',  data=data)
       if response.status_code == 200:
-        print(f'{suc()} {sent+1} Questions sent successfully')
+        screenlock.acquire()
+        print(f'{suc()} {sent+1} Questions sent successfully', end = '\r')
+        screenlock.release()
         sent += 1
       else:
         print(f'{err()} Error sending question') 
@@ -62,7 +65,7 @@ while not loop.isdigit():
       THREADS = loop
     break
   else: 
-    print(f'{err()} Please enter a number')
+    print(f'{err()} Please enter a valid number')
     
 data = {
   'ajax': 'post_question',
@@ -82,4 +85,5 @@ for t in allThreads:
   t.join()
 
 print(f'{info()} Sent {sent} questions to https://qooh.me/{username}')
+
 ext()
