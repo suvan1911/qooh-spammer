@@ -50,7 +50,7 @@ def spam(data,max):
         print(f'{err()} Error sending question') 
   
 print(f'{info()} Qooh Spammer')
-print(f'{info()} Created by: Len#7817 | https://github.com/suvan1911\n')
+print(f'{info()} Created by: svn#9034 | https://github.com/suvan1911\n')
 
 username = input(f'{inp()} Enter target qooh username: ')
 id = get_uid(username)
