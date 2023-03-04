@@ -1,2 +1,6 @@
 # qooh-spammer
-Use multi-threaded python requests to spam a qooh.me page with questions
+## Blazingly fast [qooh.me](https://qooh.me) spammer developed in python utilising multi-threaded python requests
+
+# Demo:
+![](demo.gif)
+
