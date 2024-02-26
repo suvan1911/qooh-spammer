@@ -4,3 +4,4 @@
 # Demo:
 ![](https://github.com/suvan1911/qooh-spammer/blob/main/spamdemo.gif)
 
+note: for educational purposes only!
